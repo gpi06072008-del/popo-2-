@@ -6,7 +6,7 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Body */
+/* Body background */
 body {
   background: #ffe6f0;
   display: flex;
@@ -15,13 +15,13 @@ body {
   min-height: 100vh;
 }
 
-/* Container */
+/* Container for split layout */
 .container {
   display: flex;
   flex-direction: row;
-  gap: 30px;
   width: 90vw;
   max-width: 1200px;
+  gap: 30px;
   align-items: center;
 }
 
@@ -29,17 +29,18 @@ body {
 .left-message {
   width: 45%;
   background: rgba(255,255,255,0.95);
-  padding: 25px;
+  padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   max-height: 85vh;
   overflow-y: auto;
 }
 
 .left-message h1 {
-  color: #ff3366;
   font-size: 2rem;
+  color: #ff3366;
   margin-bottom: 15px;
+  text-shadow: 1px 1px 3px #fff;
 }
 
 .message-text p {
@@ -48,6 +49,7 @@ body {
   color: #333;
 }
 
+/* Scrollbar for message */
 .left-message::-webkit-scrollbar {
   width: 6px;
 }
@@ -56,43 +58,65 @@ body {
   border-radius: 3px;
 }
 
-/* Right heart layout */
+/* Heart container */
 .heart {
   width: 45%;
   position: relative;
-  padding-top: 45%; /* square */
+  padding-top: 45%; /* maintain square */
 }
 
-/* Heart shape formula using CSS */
+/* Heart image styling */
 .heart-img {
   position: absolute;
   width: 80px;
   height: 80px;
-  object-fit: cover;
   border-radius: 50%;
+  object-fit: cover;
   border: 3px solid white;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: transform 0.5s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.5s, box-shadow 0.5s;
+  animation: float 4s ease-in-out infinite;
+}
 
-  /* Heart coordinates using parametric heart formula */
-  left: calc(50% + 40px * cos(calc(var(--i) * 36deg) * 1.5));
-  top: calc(50% - 40px * sin(calc(var(--i) * 36deg) * 1.5));
+/* Heart shape positions using parametric formula */
+.heart-img {
+  /* normalized heart coordinates */
+  left: calc(50% + 40% * (16 * sin((var(--t) * 36deg) * 1deg)**3));
+  top: calc(50% - 40% * (
+        13*cos((var(--t) * 36deg) * 1deg)
+      - 5*cos(2*(var(--t) * 36deg) * 1deg)
+      - 2*cos(3*(var(--t) * 36deg) * 1deg)
+      - cos(4*(var(--t) * 36deg) * 1deg)
+    )/13);
 }
 
 /* Hover effect */
 .heart-img:hover {
-  transform: scale(1.2);
+  transform: scale(1.3);
+  box-shadow: 0 10px 25px rgba(255,50,100,0.7);
   z-index: 10;
 }
 
+/* Floating animation */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
 /* Responsive */
-@media (max-width:900px){
-  .container{
+@media (max-width: 900px){
+  .container {
     flex-direction: column-reverse;
     align-items: center;
   }
-  .left-message, .heart { width: 90%; padding-top:90%; }
-  .heart-img { width: 50px; height: 50px; }
-  .left-message h1 { font-size:1.5rem; }
-  .message-text p { font-size:0.9rem; }
+  .left-message, .heart {
+    width: 90%;
+    padding-top: 90%;
+  }
+  .heart-img {
+    width: 50px;
+    height: 50px;
+  }
+  .left-message h1 { font-size: 1.5rem; }
+  .message-text p { font-size: 0.9rem; }
 }
