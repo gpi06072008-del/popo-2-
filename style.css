@@ -8,7 +8,7 @@ body {
   min-height:100vh;
 }
 
-/* Container */
+/* Split container */
 .container {
   display:flex;
   gap:30px;
@@ -56,26 +56,24 @@ body {
   animation: float 4s ease-in-out infinite;
 }
 
-/* Manually adjusted positions to form a heart */
-.img1 { top: 0%; left: 50%; transform: translate(-50%,0); }
-.img2 { top: 12%; left: 32%; transform: translate(-50%,0); }
-.img3 { top: 12%; left: 68%; transform: translate(-50%,0); }
-.img4 { top: 25%; left: 20%; transform: translate(-50%,0); }
-.img5 { top: 25%; left: 80%; transform: translate(-50%,0); }
-.img6 { top: 40%; left: 50%; transform: translate(-50%,0); }
-.img7 { top: 55%; left: 30%; transform: translate(-50%,0); }
-.img8 { top: 55%; left: 70%; transform: translate(-50%,0); }
-.img9 { top: 70%; left: 42%; transform: translate(-50%,0); }
-.img10 { top: 70%; left: 58%; transform: translate(-50%,0); }
-.img11 { top: 85%; left: 50%; transform: translate(-50%,0); }
+/* Manually adjusted positions to form a heart shape */
+.img1 { top:0%; left:50%; transform:translate(-50%,0); }
+.img2 { top:12%; left:30%; transform:translate(-50%,0); }
+.img3 { top:12%; left:70%; transform:translate(-50%,0); }
+.img4 { top:25%; left:20%; transform:translate(-50%,0); }
+.img5 { top:25%; left:80%; transform:translate(-50%,0); }
+.img6 { top:40%; left:50%; transform:translate(-50%,0); }
+.img7 { top:55%; left:30%; transform:translate(-50%,0); }
+.img8 { top:55%; left:70%; transform:translate(-50%,0); }
+.img9 { top:70%; left:42%; transform:translate(-50%,0); }
+.img10 { top:70%; left:58%; transform:translate(-50%,0); }
+.img11 { top:85%; left:50%; transform:translate(-50%,0); }
 
-/* Hover & floating */
-.heart-img:hover { transform: scale(1.3); box-shadow:0 10px 25px rgba(255,50,100,0.7); z-index:10; }
+/* Hover effect */
+.heart-img:hover { transform:scale(1.3); box-shadow:0 10px 25px rgba(255,50,100,0.7); z-index:10; }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+/* Floating animation */
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
 
 /* Responsive */
 @media(max-width:900px){
