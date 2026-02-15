@@ -1,12 +1,12 @@
 /* Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Body background */
+/* Body */
 body {
   background: #ffe6f0;
   display: flex;
@@ -15,13 +15,13 @@ body {
   min-height: 100vh;
 }
 
-/* Container for split layout */
+/* Split container */
 .container {
   display: flex;
   flex-direction: row;
+  gap: 30px;
   width: 90vw;
   max-width: 1200px;
-  gap: 30px;
   align-items: center;
 }
 
@@ -31,7 +31,7 @@ body {
   background: rgba(255,255,255,0.95);
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   max-height: 85vh;
   overflow-y: auto;
 }
@@ -49,7 +49,6 @@ body {
   color: #333;
 }
 
-/* Scrollbar for message */
 .left-message::-webkit-scrollbar {
   width: 6px;
 }
@@ -62,10 +61,10 @@ body {
 .heart {
   width: 45%;
   position: relative;
-  padding-top: 45%; /* maintain square */
+  padding-top: 45%; /* square */
 }
 
-/* Heart image styling */
+/* Heart images */
 .heart-img {
   position: absolute;
   width: 80px;
@@ -78,17 +77,18 @@ body {
   animation: float 4s ease-in-out infinite;
 }
 
-/* Heart shape positions using parametric formula */
-.heart-img {
-  /* normalized heart coordinates */
-  left: calc(50% + 40% * (16 * sin((var(--t) * 36deg) * 1deg)**3));
-  top: calc(50% - 40% * (
-        13*cos((var(--t) * 36deg) * 1deg)
-      - 5*cos(2*(var(--t) * 36deg) * 1deg)
-      - 2*cos(3*(var(--t) * 36deg) * 1deg)
-      - cos(4*(var(--t) * 36deg) * 1deg)
-    )/13);
-}
+/* Manually adjusted positions to form heart */
+.img1 { top: 0%; left: 50%; transform: translate(-50%,0); }      /* top center */
+.img2 { top: 10%; left: 30%; transform: translate(-50%,0); }     /* left top */
+.img3 { top: 10%; left: 70%; transform: translate(-50%,0); }     /* right top */
+.img4 { top: 25%; left: 20%; transform: translate(-50%,0); }     /* left mid */
+.img5 { top: 25%; left: 80%; transform: translate(-50%,0); }     /* right mid */
+.img6 { top: 40%; left: 50%; transform: translate(-50%,0); }     /* center */
+.img7 { top: 55%; left: 30%; transform: translate(-50%,0); }     /* left lower */
+.img8 { top: 55%; left: 70%; transform: translate(-50%,0); }     /* right lower */
+.img9 { top: 70%; left: 45%; transform: translate(-50%,0); }     /* bottom left */
+.img10 { top: 70%; left: 55%; transform: translate(-50%,0); }    /* bottom right */
+.img11 { top: 85%; left: 50%; transform: translate(-50%,0); }    /* tip of heart */
 
 /* Hover effect */
 .heart-img:hover {
@@ -104,19 +104,13 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 900px){
+@media (max-width:900px){
   .container {
     flex-direction: column-reverse;
     align-items: center;
   }
-  .left-message, .heart {
-    width: 90%;
-    padding-top: 90%;
-  }
-  .heart-img {
-    width: 50px;
-    height: 50px;
-  }
-  .left-message h1 { font-size: 1.5rem; }
-  .message-text p { font-size: 0.9rem; }
+  .left-message, .heart { width: 90%; padding-top: 90%; }
+  .heart-img { width: 50px; height: 50px; }
+  .left-message h1 { font-size:1.5rem; }
+  .message-text p { font-size:0.9rem; }
 }
